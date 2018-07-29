@@ -2,15 +2,11 @@
 
 The `MMM-iFrame-Ping` module is for MagicMirror². It allow to display an iFrame of (m)any web content to your [MagicMirror](https://github.com/MichMich/MagicMirror). Infortunately, not all websites support being in a iFrame.
 
-Several other iFrame modules exists for MagicMirror, main others: 
+MagicMirror Forum post : https://forum.magicmirror.builders/topic/8481/mmm-iframe-ping
 
-- [iFrame from desertblade](https://github.com/desertblade/iFrame) : the original one with basics functions : one URL, no periodic refresh
-- [MMM-iFrame from alberttwong](https://github.com/alberttwong/MMM-iFrame) : allow several rotating URL but no periodic refresh of the content
-- [MMM-iFrameReload from TheBogueRat](https://github.com/TheBogueRat/MMM-iFrameReload) : one possible URL with periodic refresh
- 
-## Main functionalities of MMM-iFrame-Ping module: 
+## Main functionalities 
 - Allow periodic refresh of the iFrame, or not (configurable), this allow to display images or video
-- Ping the URL before trying to display the content. Display an error (with the last successful PING date and time) is the host is not reachable. PING code from [MMM-Ping by CFenner](https://github.com/CFenner/MMM-Ping)
+- Ping the URL before trying to display the content. Display an error (with the last successful PING date and time) if the host is not reachable. PING code from [MMM-Ping by CFenner](https://github.com/CFenner/MMM-Ping)
 - If a PIR-sensor using MMM-PIR-Sensor module is used, the iFrame will not be updated during screen off (this behavior works also with all other module that send the notification "USER_PRESENCE") and will be refresh with screen on.
 - If the iFrame-Ping module is hidden (by REMOTE-CONTROL or any Carousel module for example), the iFrame will not be updated. As soon as one MMM-iFrame-Ping module will be again displayed on the screen, an update will be requested.
 - Possibility to display the date and time of the last update request (configurable)
@@ -23,10 +19,13 @@ Some screenshot :
 
 Displaying YouTube (displayLastUpdate: true) : 
 ![MMM-iFrame-Ping](https://github.com/AgP42/MMM-iFrame-Ping/blob/master/screenshot/MMM-iFrame-Ping_youtube_update.png)
+
 Displaying TRENDnet snapshot (displayLastUpdate: false) : 
 ![MMM-iFrame-Ping](https://github.com/AgP42/MMM-iFrame-Ping/blob/master/screenshot/MMM-iFrame-Ping.png)
+
 PING Nok (displayLastUpdate: true) : 
 ![MMM-iFrame-Ping](https://github.com/AgP42/MMM-iFrame-Ping/blob/master/screenshot/MMM-iFrame-Ping_Nok_with%20update%20display.png)
+
 PING OK but content not yet loaded (displayLastUpdate: true) : 
 ![MMM-iFrame-Ping](https://github.com/AgP42/MMM-iFrame-Ping/blob/master/screenshot/MMM-iFrame-Ping_ok.png)
 
@@ -163,6 +162,12 @@ Just got to the video you want. Click share and embed and pull out the url and a
 
 See MMM-iFrame-Ping.css file for details of configurable field
 
+## Other iFrame modules:
+Several other iFrame modules exists for MagicMirror, main others: 
+
+- [iFrame from desertblade](https://github.com/desertblade/iFrame) : the original one with basics functions : one URL, no periodic refresh
+- [MMM-iFrame from alberttwong](https://github.com/alberttwong/MMM-iFrame) : allow several rotating URL but no periodic refresh of the content
+- [MMM-iFrameReload from TheBogueRat](https://github.com/TheBogueRat/MMM-iFrameReload) : one possible URL with periodic refresh
 
 The MIT License (MIT)
 =====================

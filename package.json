@@ -1,5 +1,5 @@
 {
-  "name": "Magic-Mirror-Module-MMM-iFrame-Ping",
+  "name": "MMM-iFrame-Ping",
   "version": "0.0.1",
   "description": "Iframe module for Magic Mirror",
   "repository": {
@@ -10,6 +10,7 @@
     "magic mirror",
     "smart mirror",
     "iframe",
+    "ping",
     "module"
   ],
   "author": "AgP42",

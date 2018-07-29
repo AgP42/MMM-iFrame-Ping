@@ -1,0 +1,78 @@
+/*
+ * Structure of the module : 
+ * 
+ * 		*************************************************************************
+ * 		*			.mainWrapper (contains everything else)						*
+ * 		*																		*
+ * 		*	*****************************************************************	*
+ * 		*	*	iFrame (only displayed after a successfull ping)			*	*
+ * 		*	*																*	*
+ * 		*	*****************************************************************	*
+ *		*																		*
+ * 		*	*****************************************************************	*
+ * 		*	*	.pinginfo (not displayed if PING ok and onload done)		*	*
+ * 		*	*																*	*
+ * 		*	*****************************************************************	*
+ * 		*																		*
+ *  	* 	*****************************************************************	*
+ * 		*	*	.updateinfo (only displayed if "displayLastUpdate: true,")	*	*
+ * 		*	*																*	*
+ * 		*	*****************************************************************	*
+ * 		*																		*
+ * 		*************************************************************************
+ * 
+ * 
+ */
+
+.mainWrapper{
+
+margin-bottom: 200px;
+/*transform: scale(0.5) ;*/
+
+}
+
+
+.pinginfo{
+
+/*xsmall light*/
+
+  font-size: 15px;
+  line-height: 20px;
+  
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  
+/*  transform: scale(2) ;*/
+  
+}
+
+.errorping{
+/*red*/
+
+  color: #ff0000;
+
+}
+
+.updateinfo{
+/*xsmall light*/
+
+  font-size: 15px;
+  line-height: 20px;
+  
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  
+/*  transform: scale(2) ;*/
+    
+}
+
+iframe{
+
+border:0 ; 
+/*transform: scale(0.5) ; */
+/*margin-bottom: 200px;*/
+
+}
+
+
+

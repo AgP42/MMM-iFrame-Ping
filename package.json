@@ -1,0 +1,27 @@
+{
+  "name": "Magic-Mirror-Module-MMM-iFrame-Ping",
+  "version": "0.0.1",
+  "description": "Iframe module for Magic Mirror",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgP42/MMM-iFrame-Ping"
+  },
+  "keywords": [
+    "magic mirror",
+    "smart mirror",
+    "iframe",
+    "module"
+  ],
+  "author": "AgP42",
+  "contributors": "https://github.com/AgP42/MMM-iFrame-Ping/graphs/contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AgP42/MMM-iFrame-Ping/issues"
+  },
+  "homepage": "https://github.com/AgP42/MMM-iFrame-Ping",
+  "dependencies": {
+    "request": "latest",
+    "express": "latest",
+    "body-parser" : "latest"
+    }
+}

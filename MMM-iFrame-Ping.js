@@ -190,7 +190,7 @@ getDom: function() {
 	}
 	
 	var wrapper = document.createElement("div");// main Wrapper that containts the others
-	wrapper.className = "mainWrapper"; //for CSS customization
+	wrapper.className = "mainWrapperIP"; //for CSS customization
 
 	var pinginfo = document.createElement("div"); //line that display the ping result
 	
@@ -199,7 +199,7 @@ getDom: function() {
 		wrapper.appendChild(iframe);//request the iFrame to be displayed
 
 		//display infos about PING result
-		pinginfo.className = "pinginfo";
+		pinginfo.className = "pinginfoIP";
 		pinginfo.innerHTML = "PING OK : Loading..."
 		wrapper.appendChild(pinginfo);
 			
@@ -220,7 +220,7 @@ getDom: function() {
 		
 	}else{ //otherwise : PING NOK... --> display the last successfull ping with an error message
 		
-		pinginfo.className = "pinginfo errorping";
+		pinginfo.className = "pinginfoIP errorpingIP";
 		pinginfo.innerHTML = "PING NOK since " + moment(self.lastPingOK).format(this.config.displayLastUpdateFormat);
 		wrapper.appendChild(pinginfo);
 		
@@ -232,7 +232,7 @@ getDom: function() {
 		this.lastUpdate = Date.now() / 1000 ; 
 
 		var updateinfo = document.createElement("div"); //le div qui donne la date, si configuré pour etre affichée
-		updateinfo.className = "updateinfo"; // align-left
+		updateinfo.className = "updateinfoIP"; // align-left
 		updateinfo.innerHTML = "Update requested at : " + moment.unix(this.lastUpdate).format(this.config.displayLastUpdateFormat);
 		wrapper.appendChild(updateinfo);
 	}

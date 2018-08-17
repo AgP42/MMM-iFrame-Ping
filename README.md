@@ -150,7 +150,7 @@ Snapshot URL : http://website.com:port/image/jpeg.cgi
 (Works only without "Snapshot URL Authentication")
 
 ### Nest Camera streaming
-As of right now, Nest Camera only support streaming to iFrame when the camera feed is set to public. When you set it to public, you'll get a live URL and a iFrame embedded URL (should look like https://video.nest.com/embedded/live/wSbs3mRsOF?autoplay=1). For more info, check out this thread https://nestdevelopers.io/t/is-there-a-way-to-get-nest-camera-streams-in-an-iframe/813. 
+Nest Camera doesn't support the PING, consequently this module will not be able to display them ([Issue](https://github.com/AgP42/MMM-iFrame-Ping/issues/1)). Please use another iFrame module to display Nest Camera stream...(See bellow)
 
 ### D-Link Camera streaming
 D-Link cameras streams can be easily embedded into an iFrame.  Some cameras require a username and password.  You can construct a URL that looks like this http://admin:password@10.0.1.7/mjpeg.cgi. For mroe info, check out http://forums.dlink.com/index.php?PHPSESSID=ag1ne0jgnnl7uft3s1ssts14p4&topic=59173.0.

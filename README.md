@@ -81,7 +81,7 @@ The following properties can be configured:
 		</tr>
 		<tr>
 			<td><code>url</code></td>
-			<td>the URL(s) in the iFrame<br>
+			<td>the URL in the iFrame<br>
 				<br><b>Example:</b> See use case examples bellow. https://github.com/AgP42/MMM-iFrame-Ping/blob/master/README.md#use-case-examples </code>
 				<br><b>Default value:</b> <code>"http://magicmirror.builders/"</code>
 			</td>
@@ -153,7 +153,7 @@ Snapshot URL : http://website.com:port/image/jpeg.cgi
 Nest Camera doesn't support the PING, consequently this module will not be able to display them ([Issue](https://github.com/AgP42/MMM-iFrame-Ping/issues/1)). Please use another iFrame module to display Nest Camera stream...(See bellow)
 
 ### D-Link Camera streaming
-D-Link cameras streams can be easily embedded into an iFrame.  Some cameras require a username and password.  You can construct a URL that looks like this http://admin:password@10.0.1.7/mjpeg.cgi. For mroe info, check out http://forums.dlink.com/index.php?PHPSESSID=ag1ne0jgnnl7uft3s1ssts14p4&topic=59173.0.
+D-Link cameras streams can be easily embedded into an iFrame.  Some cameras require a username and password.  You can construct a URL that looks like this http://admin:password@10.0.1.7/mjpeg.cgi. For more info, check out http://forums.dlink.com/index.php?PHPSESSID=ag1ne0jgnnl7uft3s1ssts14p4&topic=59173.0.
 
 ### Youtube streaming
 Just got to the video you want. Click share and embed and pull out the url and add the autoplay parameter (eg.   https://www.youtube.com/embed/pcmjht0Hqvw?autoplay=1).

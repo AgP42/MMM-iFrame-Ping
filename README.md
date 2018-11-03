@@ -156,7 +156,64 @@ Nest Camera doesn't support the PING, consequently this module will not be able 
 D-Link cameras streams can be easily embedded into an iFrame.  Some cameras require a username and password.  You can construct a URL that looks like this http://admin:password@10.0.1.7/mjpeg.cgi. For more info, check out http://forums.dlink.com/index.php?PHPSESSID=ag1ne0jgnnl7uft3s1ssts14p4&topic=59173.0.
 
 ### Youtube streaming
-Just got to the video you want. Click share and embed and pull out the url and add the autoplay parameter (eg.   https://www.youtube.com/embed/pcmjht0Hqvw?autoplay=1).
+Just got to the video you want (see bellow more details). Click share and embed and pull out the url and add the autoplay parameter (eg.   https://www.youtube.com/embed/pcmjht0Hqvw?autoplay=1).
+
+#### Youtube playlist streaming (thanks to [theramez](https://github.com/AgP42/MMM-iFrame-Ping/issues/4))
+
+You can stream any public playlist or make your own playlist (this requires a youtube account). 
+With your own playlist streaming on the mirror, you are able to change the contents directly on YouTube (adding videos, removing others, adding live channels and broadcasts..etc) using your mobile or desktop, without changing anything to the mirror and it'll be updated automatically 🥇
+
+To do so : firstly, go to the first video in any playlist, right click and choose Copy embed code as seen here
+![MMM-iFrame-Ping](https://github.com/AgP42/MMM-iFrame-Ping/blob/master/screenshot/youtubeplaylist.jpg)
+
+now paste it on any notepad. It should look like that :
+```
+<iframe width="853" height="480" src="https://www.youtube.com/embed/XMIc4uTAMh0?list=PLbIZ6k-SE9ShGEZ_wuvG3hatiC6jWJgVm" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+```
+
+we only need the source src part so copy this part only, it should look like that :
+```
+https://www.youtube.com/embed/XMIc4uTAMh0?list=PLbIZ6k-SE9ShGEZ_wuvG3hatiC6jWJgVm
+```
+
+copy this link to the module url: in config.js file and voila! you've a full playlist in your mirror... but wait a minute videos are not auto playable and I want to add a shuffle! also what happens when the list play is finished? here comes the fun part (^_^) you can simply add tags called YouTube player parameters within your link just like that link&TAG
+so in our example to enable autoplay add tag:
+
+    autoplay=1
+
+so our link will be
+```
+https://www.youtube.com/embed/XMIc4uTAMh0?list=PLbIZ6k-SE9ShGEZ_wuvG3hatiC6jWJgVm&autoplay=1
+```
+
+you can add multiple tags like link&TAG1&TAG2&TAG3
+to enable list repeating add tag
+
+    loop=1
+
+to remove the YouTube logo from the control bar add
+
+    modestbranding=1
+
+to disable videos annotations add
+
+    iv_load_policy=3
+
+Small hint: you can test your link in the browser easily : just open a new tab and paste it to see how it will be exactly on the mirror
+
+so we'll edit our link to make it autoplayable and disable annoying annotations and remove YouTube logo
+```
+https://www.youtube.com/embed/XMIc4uTAMh0?list=PLbIZ6k-SE9ShGEZ_wuvG3hatiC6jWJgVm&autoplay=1&modestbranding=1&iv_load_policy=3
+```
+
+wanna edit the YouTube player more ? here is the full list of tags in The Official YouTube API page under Supported Parameters table :
+to disable keyboard inputs to the player, add
+
+    disablekb=1
+
+to disable the player controls completely for more clean look, add
+
+    controls=0
 
 ## CSS use
 

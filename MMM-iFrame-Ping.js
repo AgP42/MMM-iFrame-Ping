@@ -22,6 +22,7 @@ Module.register("MMM-iFrame-Ping",{
                 displayLastUpdate: true, //to display the last update of the iFrame bellow te iFrame
 				displayLastUpdateFormat: 'ddd - HH:mm:ss', //format of the date and time to display
                 url: "http://magicmirror.builders/", //source of the iFrame to be displayed
+				pingbeforedisplay: true,
                 scrolling: "no" // allow scrolling or not. html 4 only
 		},
 
@@ -34,17 +35,18 @@ start: function () {
 		this.IntervalID = 0;
 		this.PING_OK = false;
 		this.lastPingOK = null; //init at now dans le node_helper
+		this.urlToDisplay = this.config.url;
 				
 		//data load once at start-up
 		this.iframeLoad();
 		
 		//ping request to ensure the target it reachable, only if yes the iFrame will be displayed
-		this.sendSocketNotification('PING_REQUEST', this.config.url);
+		this.sendSocketNotification('PING_REQUEST', this.urlToDisplay);
 				                               
 		//set autoupdate if autoRefresh true                               
         if(this.config.autoRefresh){
 			this.IntervalID = setInterval( function () { 
-				self.sendSocketNotification('PING_REQUEST', self.config.url);
+				self.sendSocketNotification('PING_REQUEST', self.urlToDisplay);
 			}, this.config.updateInterval * 60 * 1000);    
 		}
 
@@ -80,6 +82,27 @@ notificationReceived: function(notification, payload) {
 		UserPresence = payload;
 		this.GestionUpdateIntervaliFrame();
 	}
+	
+	if (notification === "iFrame_Ping_URL") { // notification sent by MMM-Remote-Control
+		
+		if(this.config.logDebug){
+			Log.log("Fct notificationReceived iFrame_Ping_URL - payload = " + payload);
+		}
+		
+		this.urlToDisplay = payload.url;		
+
+		//ping request to ensure the target it reachable, only if yes the iFrame will be displayed
+		this.sendSocketNotification('PING_REQUEST', this.urlToDisplay);
+				                               
+/*		//set autoupdate if autoRefresh true                               
+        if(this.config.autoRefresh){
+			this.IntervalID = setInterval( function () { 
+				self.sendSocketNotification('PING_REQUEST', self.urlToDisplay);
+			}, this.config.updateInterval * 60 * 1000);    
+		}	//*/	
+	
+	
+	}
 },
 
 GestionUpdateIntervaliFrame: function() {
@@ -92,13 +115,13 @@ GestionUpdateIntervaliFrame: function() {
 		}
     
 		// update now
-		iframe.src = this.config.url; //to launch again in case it was a video
-		self.sendSocketNotification('PING_REQUEST', self.config.url);
+		iframe.src = this.urlToDisplay; //to launch again in case it was a video
+		self.sendSocketNotification('PING_REQUEST', self.urlToDisplay);
 
 		//set autoupdate again if autoRefresh true and no other setInterval is running                     
 		if (this.IntervalID === 0 && this.config.autoRefresh){
 			this.IntervalID = setInterval( function () { 
-				self.sendSocketNotification('PING_REQUEST', self.config.url);
+				self.sendSocketNotification('PING_REQUEST', self.urlToDisplay);
 				}, this.config.updateInterval * 60 * 1000);  
 		}
 	
@@ -135,7 +158,7 @@ iframeLoad: function() {
 	iframe.width = this.config.width;
 	iframe.height = this.config.height;
 	iframe.scrolling = this.config.scrolling;
-	iframe.src = this.config.url; 
+	iframe.src = this.urlToDisplay; 
 	
     return iframe;
 },
@@ -190,7 +213,7 @@ getDom: function() {
 	}
 	
 	var wrapper = document.createElement("div");// main Wrapper that containts the others
-	wrapper.className = "mainWrapperIP"; //for CSS customization
+	wrapper.className = "mainWrapperPing"; //for CSS customization
 
 	var pinginfo = document.createElement("div"); //line that display the ping result
 	
@@ -199,7 +222,7 @@ getDom: function() {
 		wrapper.appendChild(iframe);//request the iFrame to be displayed
 
 		//display infos about PING result
-		pinginfo.className = "pinginfoIP";
+		pinginfo.className = "pinginfo";
 		pinginfo.innerHTML = "PING OK : Loading..."
 		wrapper.appendChild(pinginfo);
 			
@@ -220,7 +243,7 @@ getDom: function() {
 		
 	}else{ //otherwise : PING NOK... --> display the last successfull ping with an error message
 		
-		pinginfo.className = "pinginfoIP errorpingIP";
+		pinginfo.className = "pinginfo errorping";
 		pinginfo.innerHTML = "PING NOK since " + moment(self.lastPingOK).format(this.config.displayLastUpdateFormat);
 		wrapper.appendChild(pinginfo);
 		
@@ -232,7 +255,7 @@ getDom: function() {
 		this.lastUpdate = Date.now() / 1000 ; 
 
 		var updateinfo = document.createElement("div"); //le div qui donne la date, si configuré pour etre affichée
-		updateinfo.className = "updateinfoIP"; // align-left
+		updateinfo.className = "updateinfo"; // align-left
 		updateinfo.innerHTML = "Update requested at : " + moment.unix(this.lastUpdate).format(this.config.displayLastUpdateFormat);
 		wrapper.appendChild(updateinfo);
 	}
